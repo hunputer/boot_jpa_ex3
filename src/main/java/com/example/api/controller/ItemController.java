@@ -6,6 +6,8 @@ import com.example.api.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -24,6 +26,20 @@ public class ItemController {
         itemService.saveItem(book);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/item/one")
+    public String getItemOne(){
+
+        return "itemOne";
+    }
+
+    @PostMapping("/item/one")
+    public String getItemOneResult(BookForm bookForm, Model model){
+
+        model.addAttribute("book", itemService.getOne(bookForm.getId()));
+
+        return "itemOne";
     }
 
 }

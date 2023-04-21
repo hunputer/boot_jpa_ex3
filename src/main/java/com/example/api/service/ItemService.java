@@ -18,4 +18,8 @@ public class ItemService {
         itemRepository.save(book);
     }
 
+    public Book getOne(long id){
+       return itemRepository.getOne(id);
+    }
+
 }

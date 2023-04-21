@@ -17,4 +17,8 @@ public class ItemRepository {
         em.persist(book);
     }
 
+    public Book getOne(Long id){
+        return em.find(Book.class, id);
+    }
+
 }
