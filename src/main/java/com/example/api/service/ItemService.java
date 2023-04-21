@@ -1,11 +1,13 @@
 package com.example.api.service;
 
+import com.example.api.controller.form.BookForm;
 import com.example.api.domain.item.Book;
 import com.example.api.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -21,5 +23,15 @@ public class ItemService {
     public Book getOne(long id){
        return itemRepository.getOne(id);
     }
+
+    public List<Book> getList(){
+        return itemRepository.getList();
+    }
+
+    public List<BookForm> getListByCust(String custName){
+        return itemRepository.getListByCust(custName);
+    }
+
+
 
 }

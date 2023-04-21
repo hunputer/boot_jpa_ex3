@@ -7,8 +7,8 @@
 <body>
 <h1>상품 데이터 출력 예제</h1>
 
-<tr th:each = "bookDto : ${bookList}">
-    <td th:text="${bookDto.id}"></td>
+<tr th:each = "bookDto : ${bookFormList}">
+    <td th:text="${bookDto.custName}"></td>
     <td th:text="${bookDto.name}"></td>
     <td th:text="${bookDto.contents}"></td>
 </tr>

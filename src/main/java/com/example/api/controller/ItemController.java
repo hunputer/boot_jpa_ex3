@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
@@ -40,6 +42,25 @@ public class ItemController {
         model.addAttribute("book", itemService.getOne(bookForm.getId()));
 
         return "itemOne";
+    }
+
+    @GetMapping("/item/list")
+    public String getItemList(BookForm bookForm, Model model){
+
+        List<Book> list = itemService.getList();
+
+        model.addAttribute("bookList", list);
+
+        return "itemList";
+    }
+
+    @PostMapping("/item/listbycust")
+    public String getItemListByCust(BookForm bookForm, Model model){
+
+        List<BookForm> bookFormList = itemService.getListByCust(bookForm.getCustName());
+        model.addAttribute("bookFormList", bookFormList);
+
+        return "itemListByCust";
     }
 
 }
