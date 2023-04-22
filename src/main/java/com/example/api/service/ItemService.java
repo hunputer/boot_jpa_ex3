@@ -2,6 +2,7 @@ package com.example.api.service;
 
 import com.example.api.controller.form.BookForm;
 import com.example.api.domain.item.Book;
+import com.example.api.domain.item.Customer;
 import com.example.api.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class ItemService {
 
     public List<BookForm> getListByCust(String custName){
         return itemRepository.getListByCust(custName);
+    }
+
+    public List<Customer> getCustByAge(int age){
+        return itemRepository.getCustByAge(age);
     }
 
 

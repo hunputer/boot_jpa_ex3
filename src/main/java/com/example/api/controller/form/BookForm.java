@@ -11,5 +11,6 @@ public class BookForm {
     private String contents;
     private Long custNo;
     private String custName;
+    private int age;
 
 }

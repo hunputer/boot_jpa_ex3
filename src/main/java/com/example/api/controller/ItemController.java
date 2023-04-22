@@ -2,6 +2,7 @@ package com.example.api.controller;
 
 import com.example.api.controller.form.BookForm;
 import com.example.api.domain.item.Book;
+import com.example.api.domain.item.Customer;
 import com.example.api.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -61,6 +62,21 @@ public class ItemController {
         model.addAttribute("bookFormList", bookFormList);
 
         return "itemListByCust";
+    }
+
+    @GetMapping("/customer/listbyage")
+    public String getCustByAgePage(BookForm bookForm, Model model){
+
+        return "custListByAge";
+    }
+
+    @PostMapping("/customer/listbyage")
+    public String getCustByAge(BookForm bookForm, Model model){
+
+        List<Customer> list = itemService.getCustByAge(bookForm.getAge());
+        model.addAttribute("custList", list);
+
+        return "custListByAge";
     }
 
 }

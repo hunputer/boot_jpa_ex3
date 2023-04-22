@@ -7,15 +7,17 @@
 <body>
 <h1>상품 데이터 출력 예제</h1>
 
-<form action="/item/one" method="post">
+<form action="/customer/listbyage" method="post">
     나이 : <textarea id="age" name="age"></textarea>
     <button>결과전송</button>
 </form>
 
-<tr th:each = "bookDto : ${bookFormList}">
-    <td th:text="${bookDto.custName}"></td>
-    <td th:text="${bookDto.name}"></td>
-    <td th:text="${bookDto.contents}"></td>
-</tr>
+<div th:if="${custList != null}">
+    <tr th:each = "cust : ${custList}">
+        <td th:text="${cust.id}"></td>
+        <td th:text="${cust.name}"></td>
+        <td th:text="${cust.age}"></td>
+    </tr>
+</div>
 </body>
 </html>

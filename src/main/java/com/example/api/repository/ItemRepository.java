@@ -57,4 +57,13 @@ public class ItemRepository {
         return result;
     }
 
+    public List<Customer> getCustByAge(int age){
+        TypedQuery query = em.createQuery("select c from Customer c " +
+                                             "where age > :age", Customer.class)
+                        .setParameter("age", age);
+        return query.getResultList();
+    }
+
+
+
 }
