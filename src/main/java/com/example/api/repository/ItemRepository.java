@@ -63,12 +63,7 @@ public class ItemRepository {
         Query query = em.createQuery("select b from Book b inner join Order o on b.id = o.itemId where o.custName = :name")
                 .setParameter("name", name);
 
-        List<Object[]> list = query.getResultList();
-
-        for(Object[] row: list){
-            Book book = (Book)row[0];
-            result.add(book);
-        }
+        result = query.getResultList();
 
         return result;
     }
