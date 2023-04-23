@@ -79,4 +79,13 @@ public class ItemController {
         return "custListByAge";
     }
 
+    @PostMapping("/order/list")
+    public String getItemByOrder(BookForm bookForm, Model model){
+
+        List<Book> list = itemService.getItemByOrder(bookForm.getCustName());
+        model.addAttribute("itemList", list);
+
+        return "itemList";
+    }
+
 }

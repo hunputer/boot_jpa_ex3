@@ -37,6 +37,8 @@ public class ItemService {
         return itemRepository.getCustByAge(age);
     }
 
-
+    public List<Book> getItemByOrder(String custName) {
+        return itemRepository.getItemByOrder(custName);
+    }
 
 }

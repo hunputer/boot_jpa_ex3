@@ -9,5 +9,5 @@ spring:
     open-in-view: false
     generate-ddl: true
     show-sql: true
-    hibernate:
-      ddl-auto: update
+#    hibernate:
+#      ddl-auto: update

@@ -16,6 +16,8 @@ public class Order {
     @Id
     @GeneratedValue
     private long id;
-    private String itemId;
+    private long itemId;
+
+    private String custName;
 
 }

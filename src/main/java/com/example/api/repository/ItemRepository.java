@@ -57,6 +57,22 @@ public class ItemRepository {
         return result;
     }
 
+    public List<Book> getItemByOrder(String name){
+        List<Book> result = new ArrayList<>();
+
+        Query query = em.createQuery("select b from Book b inner join Order o on b.id = o.itemId where o.custName = :name")
+                .setParameter("name", name);
+
+        List<Object[]> list = query.getResultList();
+
+        for(Object[] row: list){
+            Book book = (Book)row[0];
+            result.add(book);
+        }
+
+        return result;
+    }
+
     public List<Customer> getCustByAge(int age){
         TypedQuery query = em.createQuery("select c from Customer c " +
                                              "where age > :age", Customer.class)
