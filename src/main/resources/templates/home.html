@@ -24,5 +24,28 @@
         <textarea name="custName"></textarea>
         <button></button>
     </form>
+
+    핸드폰번호 : <textarea id="inputPhoneNumber" name="phone"></textarea>
+    <button id="sendPhoneNumber">인증문자 보내기</button>
+
 </body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $('#sendPhoneNumber').click(function(){
+        let phoneNumber = $('#inputPhoneNumber').val();
+
+        $('#inputPhoneNumber').val("");
+
+        $.ajax({
+            type: "POST",
+            url: "/check/sendSMS",
+            data: {
+                "phone" : phoneNumber
+            },
+            success: function(res){
+                alert('인증번호 발송 완료!');
+            }
+        })
+    });
+</script>
 </html>
