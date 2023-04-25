@@ -33,7 +33,7 @@ public class MainController {
 
     public MainController() {
         // 반드시 계정 내 등록된 유효한 API 키, API Secret Key를 입력해주셔야 합니다!
-        this.messageService = NurigoApp.INSTANCE.initialize("NCS9KXDXPCSEXXVU", "FU9W4FY1XL6UQP9IQKV0GJ1NP87UNXIH", "https://api.coolsms.co.kr");
+        this.messageService = NurigoApp.INSTANCE.initialize("api key", "api key password", "https://api.coolsms.co.kr");
     }
 
     @GetMapping("/")
@@ -55,7 +55,7 @@ public class MainController {
 
         Message message = new Message();
         // 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
-        message.setFrom("01072773791");
+        message.setFrom("번호 찍히는 핸드폰번호");
         message.setTo(phoneForm.getPhone());
         message.setText("[인증번호안내]입력하셔야할 인증번호는["+numStr+"]입니다");
 
