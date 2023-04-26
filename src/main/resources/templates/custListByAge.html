@@ -12,6 +12,7 @@
     <button>결과전송</button>
 </form>
 
+
 <div th:if="${custList != null}">
     <tr th:each = "cust : ${custList}">
         <td th:text="${cust.id}"></td>
