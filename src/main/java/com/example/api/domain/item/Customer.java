@@ -22,6 +22,8 @@ public class Customer {
 
     private int age;
 
+    private String mem_yn;
+
     @OneToMany(mappedBy = "customer")
     private List<Book> bookList = new ArrayList<Book>();
 
