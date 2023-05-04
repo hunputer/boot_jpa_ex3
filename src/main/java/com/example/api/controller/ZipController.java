@@ -24,4 +24,12 @@ public class ZipController {
         filenames.add("image3.png");
         zipService.makeZip(filepath, filenames);
     }
+
+    @GetMapping("/zip/zip2")
+    public void unCompressZip() throws Exception{
+        String filepath = "/Users/choejihun/desktop/무제 폴더/";
+        String zipName = "압축파일.zip";
+        zipService.unCompressZip(filepath, zipName);
+    }
+
 }

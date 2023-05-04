@@ -2,12 +2,11 @@ package com.example.api.service;
 
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 @Service
@@ -35,6 +34,24 @@ public class ZipService {
 
                 out.closeEntry();
             }
+    }
+
+    public void unCompressZip(String filepath, String zipName) throws Exception{
+        File zipFile = new File(filepath, zipName);
+
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(zipFile));
+        ZipInputStream zipInputStream = new ZipInputStream(in);
+        ZipEntry zipEntry = null;
+
+        while((zipEntry = zipInputStream.getNextEntry()) != null){
+            int length = 0;
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(filepath+zipEntry.getName()));
+            while((length = zipInputStream.read()) != -1){
+                out.write(length);
+            }
+
+            zipInputStream.closeEntry();
+        }
     }
 
 }
