@@ -15,24 +15,25 @@ public class ZipService {
     public void makeZip(String filePath, List<String> fileNames) throws Exception{
 
             File zipFile = new File(filePath, "압축파일.zip");
-
             byte[] buf = new byte[4096];
 
-            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile));
-            for(String fileName : fileNames){
-                File file = new File(filePath, fileName);
+            try(ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile))){
+                for(String fileName : fileNames){
+                    File file = new File(filePath, fileName);
 
-                FileInputStream in = new FileInputStream(file);
+                    try(FileInputStream in = new FileInputStream(file)){
+                        ZipEntry zf = new ZipEntry(file.getName());
 
-                ZipEntry zf = new ZipEntry(file.getName());
+                        out.putNextEntry(zf);
 
-                out.putNextEntry(zf);
-                int len;
-                while((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
+                        int len = 0;
+                        while((len = in.read(buf)) > 0) {
+                            out.write(buf, 0, len);
+                        }
+
+                        out.closeEntry();
+                    }
                 }
-
-                out.closeEntry();
             }
     }
 
