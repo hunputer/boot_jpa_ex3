@@ -32,4 +32,12 @@ public class ZipController {
         zipService.unCompressZip(filepath, zipName);
     }
 
+    @GetMapping("/zip/addzip")
+    public void addZip() throws Exception{
+        String filepath = "/Users/choejihun/desktop/무제 폴더/";
+        List<String> filenames = new ArrayList<>();
+        filenames.add("testimage.png");
+        zipService.addZip(filepath, filenames);
+    }
+
 }
