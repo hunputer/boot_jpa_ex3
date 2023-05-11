@@ -7,19 +7,19 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class SendThread extends Thread{
-    private static String chatContent = new String();
+    private String chatContent;
 
     Socket socket = null;
 
     BufferedReader br = null;
     String name;
 
-    public static String getChatContent() {
+    public String getChatContent() {
         return chatContent;
     }
 
-    public static void setChatContent(String chatContent) {
-        SendThread.chatContent = chatContent;
+    public void setChatContent(String chatContent) {
+        this.chatContent = chatContent;
     }
 
     public SendThread(Socket socket, String name){

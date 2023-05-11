@@ -6,6 +6,15 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class ChatClient {
+    private SendThread sendThread = null;
+
+    public SendThread getSendThread() {
+        return sendThread;
+    }
+
+    public void setSendThread(SendThread sendThread) {
+        this.sendThread = sendThread;
+    }
 
     public void start(){
         Socket socket = null;
@@ -15,7 +24,7 @@ public class ChatClient {
             socket = new Socket("localhost", 8000);
 
             String name = "user" + (int)(Math.random()*10);
-            Thread sendThread = new SendThread(socket, name);
+            sendThread = new SendThread(socket, name);
             sendThread.start();
 
         }catch(IOException e){
