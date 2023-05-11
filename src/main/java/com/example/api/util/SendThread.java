@@ -7,10 +7,20 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class SendThread extends Thread{
+    private static String chatContent = new String();
+
     Socket socket = null;
 
     BufferedReader br = null;
     String name;
+
+    public static String getChatContent() {
+        return chatContent;
+    }
+
+    public static void setChatContent(String chatContent) {
+        SendThread.chatContent = chatContent;
+    }
 
     public SendThread(Socket socket, String name){
         this.socket = socket;
@@ -25,10 +35,13 @@ public class SendThread extends Thread{
             out.flush();
 
             while(true){
-                String outputMsg = "a";
-                out.println(outputMsg);
-                out.flush();
-                if("quit".equals(outputMsg))break;
+                String outputMsg = getChatContent();
+                if(outputMsg != null && "".equals(outputMsg)){
+                    out.println(outputMsg);
+                    out.flush();
+                    if("quit".equals(outputMsg))break;
+                    outputMsg = "";
+                }
             }
         }catch (IOException e){
             e.printStackTrace();
